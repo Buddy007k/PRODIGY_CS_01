@@ -4,6 +4,10 @@ def cipher(text,mode,key):
     if mode == 'd':
         key=-key
     for letter in text:
+        if letter.isupper():
+            flag=1
+        else:
+            flag=0
         letter=letter.lower()
         if not letter==' ' :
             index=letters.find(letter)
@@ -15,7 +19,12 @@ def cipher(text,mode,key):
                     new_index-=26
                 elif new_index<0:
                     new_index+=26
-                result+=letters[new_index]
+                if flag==1:
+                    result+=letters[new_index].upper()
+                else:
+                    result+=letters[new_index]
+        else:
+            result+=' '
     return result
 
 if __name__=='__main__':
